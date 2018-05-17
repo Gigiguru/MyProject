@@ -1,22 +1,24 @@
+//React redux 
 import React from "react";
+import { connect } from "react-redux";
+// flow
+import flow from 'lodash/flow';
+// react dnd
+import { DragSource, DropTarget } from 'react-dnd';
 
-export default class Course extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectItem: [],
-    }
-  }
+class Course extends React.Component {
   render() {
-    return (
-      <div className="Panel h-55px Margin5px">
+    const { course, connectDragSource, isDragging} = this.props;
+    const opacity = isDragging ? 0:1;
+    return connectDragSource(
+      <div className="Panel h-55px Margin5px" style={{opacity}}>
         <div className="ItemPanel">
           <div className="ItemPanelHeader">
-            {this.state.selectItem !== undefined ? <span>TTTKOS0900:<br />Autocadin perusteet</span> : <span>TTTKOS0900</span>}
+            {this.props.ListId === 1 ? <span>{course.Id}:<br />{course.Name}</span> : <span>{course.Id}</span>}
             <span>Type:P</span>
             <span>ECTS:5</span>
           </div>
-          {this.state.selectItem === undefined ?
+          {this.props.ListId !== 1 ?
             <div className="ItemPanelContents">
               <div>AutoCadin perusteet</div>
             </div> :
@@ -32,3 +34,27 @@ export default class Course extends React.Component {
     );
   }
 }
+// dnd component
+const courseSource ={
+  beginDrag(props){
+    return{
+      index:props.index,
+      itemId: props.courseId,
+      listId:props.listId,
+      course: props.course,
+    };
+  },
+  endDrag(props,monitor){
+    const item = monitor.getItem();
+    const dropResult = monitor.getDropResult();
+    if(dropResult && dropResult.listId !== item.listId){
+      props.RemoveCourseFromRedux(item.itemId);
+    }
+  }
+}
+export default flow(
+  DragSource("COURSE", courseSource, (connect,monitor) =>({
+    connectDragSource:connect.dragSource(),
+    isDragging:monitor.isDragging()
+  }))
+)(Course);
