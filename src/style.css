@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+}
+/***PANEL(container.js)****/
+.Panel{
+	border:1px solid black;
+    border-radius:5px;
+
+}
+.PanelHeader{
+  display: flex;
+  border-bottom:1px solid black;
+}
+.PanelHeader > span:nth-child(1){
+  flex:60%;
+  padding:5px;
+  margin:5px;
+  font-weight: bold;
+  font-size:1.1em;
+}
+.PanelHeader > span:nth-child(n+2){
+  padding:5px;
+  border:1px solid black;
+  border-radius:5px;
+  margin:5px;
+}
+.PanelContents{
+  display: flex;
+  padding:2px;
+  flex-direction: column;
+}
+
+/**ITEMPANEL(course.js)**/
+.ItemPanel{
+	border-left:5px solid black;
+    border-radius:5px;
+    margin:5px;
+    padding-left:5px;
+    height:85%;
+
+}
+.ItemPanelHeader{
+  display: flex;
+  padding:2px;
+  border-bottom:1px solid black;
+
+}
+.ItemPanelHeader > span:nth-child(1){
+  flex:60%;
+  font-weight: bold;
+  font-size:1.1em;
+}
+.ItemPanelHeader > span:nth-child(n+2){
+  padding:2px;
+  border:1px solid black;
+  border-radius:5px;
+  margin-left:5px;
+  max-height: 25px;
+
+}
+.ItemPanelContents{
+  display: flex;
+}
+.ItemPanelContents > span{
+  margin:2px;
+  padding:2px;
+  border:1px solid black;
+  border-radius:5px;
+}
+/**SelectContainer(select.js)**/
+/***PANEL(container.js)****/
+.SelectPanel{
+	border:1px solid black;
+    border-radius:5px;
+
+}
+.SelectPanelHeader{
+  display: flex;
+  border-bottom:1px solid black;
+}
+.SelectPanelHeader > span:nth-child(1){
+  flex:60%;
+  padding:5px;
+  margin:5px;
+  font-weight: bold;
+  font-size:1.1em;
+}
+.SelectPanelHeader > span:nth-child(n+2){
+  padding:5px;
+  border:1px solid black;
+  border-radius:5px;
+  margin:5px;
+}
+.SelectPanelContents{
+  display: flex;
+  padding:2px;
+  flex-direction: column;
+}
+/**Height*/
+.h-60px{
+	min-height:60px;
+}
+
+/*Margin**/
+.Margin5px{
+  margin:2px;
+}
+
+/**SpanBorder+radius*/
+.BSpan{
+  border:1px solid black;
+  border-radius:5px; 
+}
